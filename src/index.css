@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply antialiased;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer components {
+  .invoice-font {
+    font-family: 'Libre Baskerville', Georgia, serif;
+  }
+  .mono-font {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .input-base {
+    @apply w-full border border-[#E5E0D8] rounded-xl px-3 py-2.5 text-sm text-[#1A1F36]
+      placeholder:text-[#C5BFB8] focus:outline-none focus:ring-2 focus:ring-[#C9A454]
+      focus:border-transparent transition-all duration-200 bg-white;
+  }
+  .label-base {
+    @apply block text-[10px] font-semibold text-[#9CA3AF] mb-1.5 uppercase tracking-widest;
+  }
+  .section-title {
+    @apply text-[10px] font-bold text-[#C9A454] uppercase tracking-[0.2em] mb-5;
+  }
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4DB];
+  }
+  .btn-primary {
+    @apply flex items-center gap-2 bg-[#1A1F36] hover:bg-[#252B47] text-white text-sm
+      px-5 py-2.5 rounded-xl transition-all duration-200 font-semibold tracking-wide;
+  }
+  .btn-gold {
+    @apply flex items-center gap-2 bg-[#C9A454] hover:bg-[#B8923F] text-[#1A1F36] text-sm
+      px-5 py-2.5 rounded-xl transition-all duration-200 font-bold tracking-wide shadow-lg shadow-[#C9A454]/20;
+  }
+  .btn-outline {
+    @apply flex items-center gap-2 border-2 border-[#1A1F36] text-[#1A1F36] hover:bg-[#1A1F36]
+      hover:text-white text-sm px-5 py-2.5 rounded-xl transition-all duration-200 font-semibold;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F2EFE8;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4C9B0;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9A454;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #invoice-document {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  @page {
+    margin: 0;
+    size: A4;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+@keyframes shimmer {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.calculating {
+  animation: shimmer 0.5s ease-in-out;
+}
